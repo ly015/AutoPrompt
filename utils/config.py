@@ -46,6 +46,11 @@ def get_llm(config: dict):
                               openai_api_base=config.get('openai_api_base', 'https://api.openai.com/v1'),
                               openai_organization=config.get('openai_organization', LLM_ENV['openai']['OPENAI_ORGANIZATION']),
                               model_kwargs=model_kwargs)
+    elif config['type'].lower() == 'internlm':
+        return ChatOpenAI(temperature=temperature, model_name=config['name'],
+                          openai_api_key=config.get('internlm_api_token', LLM_ENV['internlm']['INTERNLM_API_TOKEN']),
+                          openai_api_base=config.get('internlm_api_base', 'https://puyu.openxlab.org.cn/puyu/api/v1/'),
+                          openai_organization='', model_kwargs=model_kwargs)
     elif config['type'].lower() == 'azure':
         return AzureChatOpenAI(temperature=temperature, azure_deployment=config['name'],
                         openai_api_key=config.get('openai_api_key', LLM_ENV['azure']['AZURE_OPENAI_API_KEY']),
