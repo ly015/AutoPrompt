@@ -10,3 +10,6 @@ azure:
 
 google:
   GOOGLE_API_KEY: ''
+
+internlm:
+  INTERNLM_API_TOKEN: 'xxx (Your InternLM API Token)'
